@@ -1,4 +1,4 @@
-import 1_Elementary_program_exercise as a
+import Elementary_program_exercise as a
 
 help(a.gross_sal)
 a.gross_sal()
