@@ -215,7 +215,7 @@ def sum_of_first_last_digit():
 
 #sum_of_first_last_digit()
 
-def monthly_emi():
+def monthly_emi_amortization():
     '''
     (8)   Formula to calculate Monthly installment on a Loan.
 
@@ -240,10 +240,90 @@ def monthly_emi():
     Write a program to calculate equal monthly installments using above formula.
     Input Loan amount, monthly interest rate, and number of years  through the key board.
 
+    (11) Write a program that calculates loan amount and interest for monthly payments,
+    for entire loan term. Also calculate Amortization.
 
     '''
 
-#    try:
-    princple = input("Enter Loan amount")
-    p = int(princple)
+    try:
+        princple = input("Enter Loan amount : ")
+        p = int(princple)
 
+        interest = input("Enter Yearly Interest % : ")
+        r = (float(interest)/(12 * 100))
+
+        timeframe = input("Enter no of years : ")
+        n = int(timeframe) * 12
+
+        emi = ((p*r*pow(1+r,n))/(pow(1+r,n)-1))
+
+        print ("Monthly EMI for {} loan amount for {} years with interest rate {} is {}".format(p,n/12,r*12*100,int(emi)))
+        print ("You will pay {} as interest for the entire loan term.".format(int((emi*n)-p)))
+
+        i = 1 #represent first month
+
+        while i <= n:
+            mi = p*r
+            p = p-(emi-mi)
+            print("Month : {}    Principal : {} Interest : {}".format(i,round(emi-mi,2),round(mi,2)))
+            i = i + 1            
+
+    except ValueError:
+        print("Loan amount/time must be in numbers and interest can be a decimal value")
+
+#monthly_emi_amortization()
+
+def tax():
+    '''
+    (9) Write a program that asks the use to enter a dollars-and-cents amount, then displays
+    the amount with 5% tax added.
+
+    Input: Enter dollars and cents : 100.00
+    Output: Total amount with 5% tax is 105.00
+
+    '''
+
+    try:
+        amt = input("Enter dollars and cents (e.g., 100.05) : ")
+        amt = float(amt)
+        print("Total amount with 5% tax is : ",amt+(amt*0.05))
+    
+    except ValueError:
+        print("Amount is not in dollars and cents format")
+
+#tax()
+
+def denomination():
+    '''
+     (10)   Write a program that asks the user to enter a US dollar amount and
+     then shows how to pay using that amount using the smallest number of $20,$10,$5, and $1 bills.
+
+     Input: Enter a dollar amount : 93
+     Output:
+        $20 bills : 4
+        $10 bills : 1
+         $5 bills : 0
+         $1 bills : 3
+
+    '''
+
+    try:
+        amt = input("Enter a dollar amount : ")
+        amt = int(amt)
+
+        #a temp variable to hold values
+        div = 0
+        reminder = 0
+
+        denomination = (20,10,5,1)  #created a tuple with denominations
+
+        for i in denomination:
+            div = amt // i #to get division in integer value
+            reminder = amt % i
+            amt = reminder   # balance amount is reassigned to amt variable         
+            print("\n ${} bills : {}".format(i,div))
+    
+    except ValueError:
+        print("Input must be a number")
+
+#denomination()

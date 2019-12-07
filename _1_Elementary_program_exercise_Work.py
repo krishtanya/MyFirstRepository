@@ -1,5 +1,6 @@
 import _1_Elementary_program_exercise as a
 
+
 help(a.gross_sal)
 a.gross_sal()
 
@@ -25,6 +26,16 @@ a.reverse_str()
 help(a.reverse_int)
 a.reverse_int()
 
-help(sum_of_first_last_digit)
+help(a.sum_of_first_last_digit)
 a.sum_of_first_last_digit()
 
+
+help(a.monthly_emi_amortization)
+a.monthly_emi_amortization()
+
+
+help(a.tax)
+a.tax()
+
+help(a.denomination)
+a.denomination()
